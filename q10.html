@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Caracteres em String</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS Personalizado -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #res {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contador de Caracteres em String</h1>
+        <div class="form-group">
+            <label for="inputString">Digite uma palavra:</label>
+            <input type="text" id="inputString" class="form-control" placeholder="Digite uma string">
+        </div>
+        <div class="form-group">
+            <label for="caractere">Digite um caractere para contar na palavra:</label>
+            <input type="text" id="caractere" class="form-control" placeholder="Digite um caractere">
+        </div>
+        <button class="btn btn-primary" onclick="contarCaractere()">Contar Caractere</button>
+        <p id="res"></p>
+    </div>
+
+    <!-- Bootstrap JS e jQuery (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function removerAcentos(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        function contarCaractere() {
+            var string = document.getElementById("inputString").value;
+            var caractere = document.getElementById("caractere").value;
+
+            if (string.length === 0 || caractere.length === 0) {
+                document.getElementById("res").innerText = "Por favor, forneça uma string e um caractere.";
+                return;
+            }
+
+            string = removerAcentos(string.toLowerCase());
+            caractere = removerAcentos(caractere.toLowerCase());
+
+            var count = 0;
+            for (var i = 0; i < string.length; i++) {
+                if (string.charAt(i) === caractere) {
+                    count++;
+                }
+            }
+
+            document.getElementById("res").innerText = `O caractere '${caractere}' aparece ${count} vezes na string.`;
+        }
+    </script>
+</body>
+
+</html>

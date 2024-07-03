@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Descubra o Retorno de Um Investimento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS Personalizado -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #res {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Descubra o Retorno de Um Investimento</h1>
+        <div class="form-group">
+            <label for="capital">Valor do capital (R$):</label>
+            <input type="number" id="capital" class="form-control" placeholder="Capital" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="taxa">Digite a taxa de juros (%):</label>
+            <input type="number" id="taxa" class="form-control" placeholder="Taxa de Juros" step="0.01">
+        </div>
+        <div class="form-group">
+            <label for="tempo">Tempo do investimento (meses):</label>
+            <input type="number" id="tempo" class="form-control" placeholder="Tempo do Investimento">
+        </div>
+        <button class="btn btn-primary" onclick="calcularMontante()">Calcular Montante</button>
+        <p id="res"></p>
+    </div>
+
+    <!-- Bootstrap JS e jQuery (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function calcularMontante() {
+            var capital = parseFloat(document.getElementById("capital").value);
+            var taxa = parseFloat(document.getElementById("taxa").value) / 100;
+            var tempo = parseInt(document.getElementById("tempo").value);
+
+            var montante = capital * Math.pow(1 + taxa, tempo);
+
+            document.getElementById("res").innerText = `Montante: R$ ${montante.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

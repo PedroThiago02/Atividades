@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contabilizador de Vogais</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS (opcional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS Personalizado -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+            /* cor azul do Bootstrap */
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* tom mais escuro de azul */
+        }
+
+        #res {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contabilizador de Vogais</h1>
+        <label for="palavra">Digite a palavra para saber quantas vogais ela tem:</label>
+        <input type="text" id="palavra" class="form-control">
+        <button class="btn btn-primary" onclick="contar()">Contar</button>
+        <p id="res">O número de vogais é: </p>
+    </div>
+
+    <!-- Bootstrap JS e jQuery (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function contar() {
+            var palavraMinuscula = document.getElementById("palavra").value;
+
+            let contar = 0
+            const vogais = ['a', 'e', 'i', 'o', 'u'];
+
+            for (let i = 0; i < palavraMinuscula.length; i++) {
+
+                if (vogais.includes(palavraMinuscula[i])) {
+                    contar++;
+                }
+
+            }
+
+            var res = document.getElementById("res");
+            res.innerHTML = `O número de vogais é: ${contar}`
+
+        }
+    </script>
+</body>
+
+</html>
